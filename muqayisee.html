@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muqayise</title>
+    <style>
+        div {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>EDEDLERI MUQAYISE ET</h1>
+
+    <div>
+        <input type="number" id="inp1" />
+        <p id="firstsign"> </p>
+        <input type="number" id="inp2" />
+        <p id="secondsign"> </p>
+        <input type="number" id="inp3" />
+        <button id="btn">Yoxla</button>
+
+    </div>
+    <script>
+        const input = document.querySelector("input")
+        const h1 = document.querySelector("h1")
+        const inp1 = document.getElementById("inp1")
+        const inp2 = document.getElementById("inp2")
+        const inp3 = document.getElementById("inp3")
+        const btn = document.getElementById("btn")
+        const firstsign = document.getElementById("firstsign")
+        const secondsign = document.getElementById("secondsign")
+        btn.onclick = function () {
+            firstsign.innerHTML = '';
+            secondsign.innerHTML = '';
+            if (input.value == "") {
+                h1.innerHTML = "Muqayise olunasi hec ne yoxdur"
+            }
+            else if ((inp1.value == "" && inp2.value == "") || (inp1.value == "" && inp3.value == "") || (inp3.value == "" && inp2.value == "")) {
+                h1.innerHTML = "Diger iki xana bosdur"
+            }
+            else if (inp1.value == "" || inp2.value == "" || inp3.value == "") {
+                h1.innerHTML = "Bir xana bosdur"
+            }
+            else if (+inp1.value == +inp2.value) {
+                firstsign.innerHTML = `=`
+                if (+inp2.value == +inp3.value) {
+                    secondsign.innerHTML = `=`
+                }
+                else if (+inp2.value < +inp3.value) {
+                    secondsign.innerHTML = `<`
+                }
+                else if (+inp2.value > +inp3.value) {
+                    secondsign.innerHTML = `>`
+                }
+            }
+            else if (+inp1.value > +inp2.value) {
+                firstsign.innerHTML = `>`
+                if (+inp2.value == +inp3.value) {
+                    secondsign.innerHTML = `=`
+                }
+                else if (+inp2.value < +inp3.value) {
+                    secondsign.innerHTML = `<`
+                }
+                else if (+inp2.value > +inp3.value) {
+                    secondsign.innerHTML = `>`
+                }
+            }
+            else{
+                firstsign.innerHTML = `<`
+                if (+inp2.value == +inp3.value) {
+                    secondsign.innerHTML = `=`
+                }
+                else if (+inp2.value < +inp3.value) {
+                    secondsign.innerHTML = `<`
+                }
+                else if (+inp2.value > +inp3.value) {
+                    secondsign.innerHTML = `>`
+                }
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>
